@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const Card = styled.div`
+interface CardProps {
+    isAvailable: boolean,
+    isActiveVariantValid: boolean
+}
+
+export const Card = styled.div<CardProps>`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -12,11 +17,32 @@ export const Card = styled.div`
     background-color: #eee;
     color: var(--gray-900);
 
+    .oos {
+        display: ${( {isAvailable} ) => isAvailable ? 'none' : 'block'};
+        top: 2rem;
+        left: 5rem;
+        position: absolute;
+        z-index: 3;
+        background-color: #C53030;
+        color: #FED7D7;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        padding: 0.2rem 1rem;
+        width: 6.5rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
 
     img {
         width: 100%;
         object-fit: contain;
         border-radius: 8px;
+    }
+
+    .card-image {
+        filter: ${( {isAvailable} ) => !isAvailable && 'grayscale(100%)'};
+        filter: ${( {isActiveVariantValid} ) => !isActiveVariantValid && 'grayscale(100%)'};
     }
     
     .title {
@@ -48,5 +74,14 @@ export const Card = styled.div`
         display: flex;
         justify-content: space-between;
         gap: 1rem;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        min-height: 2rem;
+        width: 100%;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
     }
 `
