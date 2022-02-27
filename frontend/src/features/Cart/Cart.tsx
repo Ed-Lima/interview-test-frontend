@@ -1,51 +1,64 @@
-import { useContext } from 'react';
+/**
+ * Cart
+ * Show all products that are in the cart
+ */
 
-import CartItem from './CartItem/CartItem';
-import { CartContext } from '../../CartContext';
-
-// REPLACE WITH YOUR OWN CART ITEMS & SOLUTION
-const TEMPORARY_ITEMS = [
-  {
-    id: 1,
-    name: 'Hat',
-    imageSrc:
-      'https://media.istockphoto.com/photos/hat-on-white-background-picture-id526131500?b=1&k=20&m=526131500&s=170667a&w=0&h=TVhckgzmxLZ6b1V74eel7XbFy73tldESzBcH0ZG6g0c=',
-    price: 15,
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: 'Shirt',
-    imageSrc:
-      'https://media.istockphoto.com/photos/blank-white-tshirt-front-with-clipping-path-picture-id482948743?b=1&k=20&m=482948743&s=170667a&w=0&h=DetzN8rTsgQDTyBDSWvc7gUNz0gae0CUQecM-KNN3WY=',
-    price: 10,
-    quantity: 3,
-  },
-];
-
-const Cart = () => {
-  const { setIsOpen } = useContext(CartContext);
-
-  const closeCart = () => setIsOpen(false);
-  const totalPrice = TEMPORARY_ITEMS.reduce((total, { price }) => total + price, 0).toFixed(2);
-
-  return (
-    <div className="cart-modal">
-      <div className="cart-container">
-        <button className="close-button" onClick={closeCart}>
-          →
-        </button>
-        <div className="cart-items-container">
-          {TEMPORARY_ITEMS.map((item) => (
-            <CartItem key={item.id} cartItem={item} />
-          ))}
-        </div>
-        <div className="total-container">
-          <span>Total: ${totalPrice}</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Cart;
+ import { useContext } from 'react';
+ import { useSelector } from 'react-redux'
+ import { RiCloseFill } from 'react-icons/ri';
+ 
+ import { CartItem } from './CartItem/CartItem';
+ import { CartContext } from '../../CartContext';
+ 
+ import { selectAllCart } from './state/cartSelectors';
+ import { ICartItem } from '../../interfaces';
+ import { Modal } from './Cart.styles';
+ 
+ export const Cart = () => {
+   // Get modal state
+   const { setIsOpen } = useContext(CartContext);
+ 
+   // Get all products from cart store
+   const products = useSelector(selectAllCart);
+ 
+   const closeCart = () => setIsOpen(false);
+ 
+   // Calculates the total price based on item quantity ans its price
+   /**
+    * @param {number} quantity - Cart item quantity
+    * @param {number} price - Cart item price
+    */
+   let totalPrice = 0;
+   if (products.length > 0){
+     totalPrice = products.reduce((total, { quantity, price }) => total + (price * quantity), 0).toFixed(2);
+   }
+ 
+   return (
+     <Modal>
+       <button className="close" onClick={closeCart}>
+         <RiCloseFill />
+       </button>
+ 
+       { products.length > 0 &&
+         products.map((product: ICartItem, index: number) => (
+           <CartItem key={`${product.name} ${index}`} cartItem={product} />
+         ))
+       }
+ 
+       <div className='total'>
+         <span className='title'>
+           Total: 
+         </span>
+         <span>
+           {
+             new Intl.NumberFormat('en-US', {
+               style: 'currency',
+               currency: 'USD'
+             }).format(totalPrice/ 100)
+           }
+         </span>
+       </div>
+     </Modal>
+   );
+ };
+ 

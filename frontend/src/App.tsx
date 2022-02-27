@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { CartContext } from './CartContext';
 import { Navigation } from './components/Navigation/Navigation';
 
-import Cart from './features/Cart/Cart';
+import { Cart } from './features/Cart/Cart';
 import { AppRoutes } from './Routes'
 
 import GlobalStyles from './styles/global';

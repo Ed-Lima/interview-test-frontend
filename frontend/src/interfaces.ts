@@ -20,3 +20,12 @@ export interface IProduct {
     isDiscontinued: boolean;
     variants: IVariant[]
 }
+
+export interface ICartItem {
+    id: string;
+    name: string;
+    defaultImage: string;
+    totalQuantity: number;
+    quantity: number;
+    price: number;
+}
