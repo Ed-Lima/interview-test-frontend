@@ -17,6 +17,12 @@ export const Card = styled.div<CardProps>`
     background-color: #eee;
     color: var(--gray-900);
 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
     .oos {
         display: ${( {isAvailable} ) => isAvailable ? 'none' : 'block'};
         top: 2rem;

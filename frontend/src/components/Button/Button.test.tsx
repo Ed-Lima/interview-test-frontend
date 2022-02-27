@@ -8,7 +8,7 @@ describe('Button component', () => {
         const button = screen.getByText('Click');
 
         expect(button).toBeInTheDocument();
-        expect(button).toHaveStyle('background-color: #b3b5c6');
+        expect(button).toHaveStyle('background-color: #DD6B20');
     })
 
     it('should add background color', () => {
