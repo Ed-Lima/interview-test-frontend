@@ -1,52 +1,74 @@
 # Bonsai Frontend Interview Assignment
 
-Welcome to the Frontend interview test at [Shop Bonsai](https://www.shopbonsai.ca/). First and foremost we'd like to thank you for your time and hope you have fun while doing this assignment!
+## Table of contents
+<!--ts-->
+  * [Introduction](#introduction)
+  * [Structure](#structure)
+  * [Features](#features)
+  * [Instructions](#instructions)
+<!--te-->
 
 ## Introduction
 
-This interview test simulates an environment that is similar to working at Shop Bonsai (very similar tech stack we run today).
+Welcome to the Frontend interview test at [Shop Bonsai](https://www.shopbonsai.ca/). 
+This interview test simulates an environment that is similar to working at Shop Bonsai.
 
-The current test is setup with a few basic react components: `Cart`, `CartItem` and `ProductItem`. Feel free to change any of these if you wish! The primary focus of the assignment should be to demonstrate your React, Typescript, Javascript and general coding proficiency!
+## Structure
 
-The folder structure is broken into the frontend folder and server folder, you should do your work in the frontend folder but run the server locally using the **Server** instructions below! Please note that in the frontend, there is temporary data in cart and app just to show you what the components look like, please replace them with the appropriate backend data!
+The project repository files are organized according to the diagram:
 
-The following should be noted:
+```shell
+project/
+├── frontend
+│   ├── build
+│   │	└── ...
+│   ├── public
+│   │    └── ...
+│   └── src
+│        ├── components
+│        ├── features
+│        ├── pages
+│        ├── services
+│        ├── styles
+│        └── tests
+├── App.tsx
+├── CartContext.tsx
+├── index.tsx
+├── interfaces.ts
+├── reducer.ts
+├── Routes.tsx
+├── store.ts
+├── backend/
+└── images/
+```
 
-1. All the bugs in the assigment are intentional, wink wink, nudge nudge.
-2. Work with the data from the backend as if it was real. (Do not manipulate/transform the mockData files)
-3. You can make additional assumptions, please note them if they are critical to understanding the way your features are implemented.
-4. Please document your changes well and make as many atomic commits as you feel are necessary for someone to track your changes.
+Files summary and description:
+* *components*: Commom shared components
+* *features*: Main app features (Cart & Product)
+* *pages*: Application pages, used for routing
+* *services*: Application services (axios api setup)
+* *styles*: Global styles and theme
+* *tests*: Tests setup
+* *CartContext*: Application Context for Cart modal
+* *interfaces*: Shared TS interfaces
+* *reducer*: Root reducer
+* *Routes*: Routes file
+* *store*: Redux Store
+* *backend*: Backend API
 
-## How-To: Getting Started
+* *images*: Main components printscreens, displaying the implemented features. [Features]
 
-1. Create a new Github repository
-2. Unzip and push the project onto your `main` (or `master`) branch
-3. Create a feature branch
-4. Make all necessary changes to complete this task
-5. Create a pull request towards `main` (or `master`)
-6. Share the link to your pull request with our team so our developers can review your assignment
-7. After you've heard back from us, make sure to remove your repository
-
-> We avoid working with actual pull requests towards our own Github repository, as that would go against anonymity and also allow previous candidates to see each others assignments.
-
-## Evaluation Criteria
-
-Of your submission, the following will be evaluated:
-
-- Ability to architect features
-- Completeness of feature, works as a user would expect such a feature to work
-- Adopting and using best practices
-- Coding style
-- Attention to detail
-- Clarity in communicating the feature implemented (Pictures and gifs are highly recommended)
+## Stack
+This assessment rely on the following technologies:
+* *Frontend*: ReactJS
+* *Backend*: NodeJS
+* *Styles*: styled-components
+* *Global state*: Redux
+* *Tests*: Jest
 
 ## Features
 
-For this assignment, please implement an _add to cart_ feature from the list of products. We have a simple node server for you to fetch products from. It's up to you to figure out everything required to make it work including frontend data validation and preventing adding to cart for out of stock products. You can find the product data shape [here](https://github.com/ShopBonsai/interview-test-frontend/tree/main/server/types/product.ts).
-
-In this test, please use redux for state management and your preferred side effect library (redux-thunk, redux-saga, redux-observable) if needed! We strongly recommend you follow _functional programming_ practices when it comes to how you write your code, as a result we prefer you don't use redux-toolkit since the code written resembles mutable patterns.
-
-UI should have the following features:
+For this assignment, all the features bellow were implemented using Redux, Redux Thunk and _functional programming_.
 
 1. **Products should show selectable options based on each `Product` data.**
 
