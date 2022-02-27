@@ -1,19 +1,27 @@
-import { useContext } from "react";
+/**
+ * Header Component
+ */
 
-import { CartContext } from "../../cart-context";
-
-const Navigation = () => {
-  const { isOpen, setIsOpen } = useContext(CartContext);
-
-  const toggleCart = () => setIsOpen(!isOpen);
-
-  return (
-    <nav className="navigation-bar">
-      <div className="cart-icon" onClick={toggleCart}>
-        Cart
-      </div>
-    </nav>
-  );
-};
-
-export default Navigation;
+ import { useContext } from 'react';
+ import { RiShoppingCart2Line } from 'react-icons/ri';
+ 
+ import { CartContext } from '../../CartContext';
+ import { Button } from '../Button/Button';
+ 
+ import { Container, Content } from './Navigation.styles';
+ 
+ export const Navigation = () => {
+   const { isOpen, setIsOpen } = useContext(CartContext);
+ 
+   const toggleCart = () => setIsOpen(!isOpen);
+ 
+   return (
+     <Container>
+       <Content>
+         <span className="title">Bonsai.</span>
+         <Button onClick={toggleCart}><RiShoppingCart2Line /></Button>
+       </Content>
+     </Container>
+   );
+ };
+ 

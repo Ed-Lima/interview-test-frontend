@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import CartItem from './CartItem/CartItem';
-import { CartContext } from '../../cart-context';
+import { CartContext } from '../../CartContext';
 
 // REPLACE WITH YOUR OWN CART ITEMS & SOLUTION
 const TEMPORARY_ITEMS = [
