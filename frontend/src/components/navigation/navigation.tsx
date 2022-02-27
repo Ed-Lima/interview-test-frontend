@@ -1,7 +1,6 @@
 /**
  * Header Component
  */
-
  import { useContext } from 'react';
  import { RiShoppingCart2Line } from 'react-icons/ri';
  
