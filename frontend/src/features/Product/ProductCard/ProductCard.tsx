@@ -1,7 +1,5 @@
 import { FC, ReactElement } from "react";
 
-import "./product-card.styles.css";
-
 export interface IProduct {
   name: string;
   description: string;

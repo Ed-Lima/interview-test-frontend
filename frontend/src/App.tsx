@@ -3,9 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { CartContext } from './cart-context';
+import Navigation from './components/Navigation/Navigation';
 
-import Cart from './components/cart/cart';
-import Navigation from './components/navigation/navigation';
+import Cart from './features/Cart/Cart';
 import { AppRoutes } from './Routes'
 
 import GlobalStyles from './styles/global';
