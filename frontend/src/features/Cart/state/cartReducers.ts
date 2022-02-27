@@ -6,13 +6,15 @@ const initialState: ICartItem[] = [];
 
 export const cartReducer = (state = initialState, action: AnyAction) => {
     switch(action.type) {
-
         // Add item to the store
         case 'cart/productAdded': {
-            return [
-                ...state,
-                action.payload
-            ]
+            const cart = state.slice();
+            const index = cart.findIndex((item: ICartItem) => item.id === action.payload.id);
+
+            if(index < 0){
+                return [...state, action.payload]
+            }
+            return state
         }
         case 'cart/productChanged': {
 

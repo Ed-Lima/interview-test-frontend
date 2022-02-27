@@ -4,7 +4,7 @@
  * @param {IProduct} product - The default parent product
  */
 
- import { FC, ReactElement, MouseEvent, memo, useState } from "react";
+ import { FC, ReactElement, MouseEvent, memo, useState, useContext } from "react";
  import { RiShoppingCart2Line } from "react-icons/ri";
  import { useDispatch } from 'react-redux';
  import { Button } from "../../../components/Button/Button";
@@ -13,6 +13,7 @@
  
  import { Card } from './ProductCard.styles';
  import { IProduct, IVariant, SelectableOptions } from  '../../../interfaces';
+import { CartContext } from "../../../CartContext";
  
  interface IProductCardProps {
    product: IProduct;
@@ -20,6 +21,7 @@
  
  const ProductCard: FC<IProductCardProps> = ({ product }): ReactElement => {
    const dispatch = useDispatch();
+   const { isOpen, setIsOpen } = useContext(CartContext);
    const [ activeVariant, setActiveVariant ] = useState<IVariant>(product.variants[0]);
  
    const { id, name, defaultImage, description, variants } = product;
@@ -61,6 +63,8 @@
            price: activeVariant.priceCents
          })
        )
+
+       setIsOpen(true);
      }
    }
  

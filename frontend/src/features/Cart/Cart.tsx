@@ -11,7 +11,7 @@
  import { CartContext } from '../../CartContext';
  
  import { selectAllCart } from './state/cartSelectors';
- import { ICartItem } from '../../interfaces';
+ import { ICartItem, IProduct } from '../../interfaces';
  import { Modal } from './Cart.styles';
  
  export const Cart = () => {
@@ -30,15 +30,15 @@
     */
    let totalPrice = 0;
    if (products.length > 0){
-     totalPrice = products.reduce((total, { quantity, price }) => total + (price * quantity), 0).toFixed(2);
+     totalPrice = products.reduce((total: number, { quantity, price }: ICartItem) => total + (price * quantity), 0).toFixed(2);
    }
  
    return (
      <Modal>
-       <button className="close" onClick={closeCart}>
-         <RiCloseFill />
-       </button>
- 
+       <div className='header'>
+        <button className="close" onClick={closeCart}><RiCloseFill /></button>
+        <h2>Your Cart</h2>
+       </div>
        { products.length > 0 &&
          products.map((product: ICartItem, index: number) => (
            <CartItem key={`${product.name} ${index}`} cartItem={product} />

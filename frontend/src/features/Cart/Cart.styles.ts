@@ -14,11 +14,17 @@ export const Modal = styled.div`
     overflow-y: scroll;
     z-index: 4;
 
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
     .close {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 2rem;
         font-size: 2rem;
         outline: none;
         border: none;
