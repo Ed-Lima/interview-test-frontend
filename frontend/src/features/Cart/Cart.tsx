@@ -1,9 +1,7 @@
 import { useContext } from 'react';
 
-import CartItem from '../cart-item/cart-item';
+import CartItem from './CartItem/CartItem';
 import { CartContext } from '../../cart-context';
-
-import './cart.styles.css';
 
 // REPLACE WITH YOUR OWN CART ITEMS & SOLUTION
 const TEMPORARY_ITEMS = [

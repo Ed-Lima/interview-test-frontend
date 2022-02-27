@@ -1,7 +1,5 @@
 import { FC, ReactElement } from 'react';
 
-import './cart-item.styles.css';
-
 export interface ICartItem {
   name: string;
   imageSrc: string;

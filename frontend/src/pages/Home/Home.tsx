@@ -1,4 +1,4 @@
-import ProductCard from '../../components/product-card/product-card';
+import ProductCard from '../../features/Product/ProductCard/ProductCard';
 
 export const Home = () => {
     // REPLACE WITH API FETCHED ITEMS
@@ -23,7 +23,7 @@ export const Home = () => {
     return(
         <div className="products-listing">
             {TEMPORARY_ITEMS.map((productItem) => (
-            <ProductCard key={productItem.id} product={productItem} />
+                <ProductCard key={productItem.id} product={productItem} />
             ))}
         </div>
     );
